@@ -1,5 +1,5 @@
 # DS-4002-P3
-## Project 2 - Knights of Avril
+## Project 3 - Knights of Avril
 In this github repository you will find our README.md file, LICENSE.md file, SRC, Data, and Figures folders. Our README.md file (the file you are currently reading) will serve as a guide to what is contained in our repository. Our LICENSE.md file explains how visitors can interact with this repository. The SRC folder contains all of our source code for the project. The Data folder contains our dataset. Finally, our Figures folder contains all our graphs we created to explore our hypothesis.
 
 ## SRC
