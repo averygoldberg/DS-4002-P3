@@ -14,6 +14,7 @@ To use our code, simply download the file above and run it in RStudio, ensuring 
 | country | Character | Name of the country |
 | year | Numeric | Year the data was collected |
 | score | Numeric | Happiness score reported of a country for a given year |
+
 The score variable was extracted from the original dataset which had country and year variables with the happiness score for each country listed under the given year.
 
 
