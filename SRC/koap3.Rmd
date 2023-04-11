@@ -59,9 +59,24 @@ perc_change$continent <- countrycode(sourcevar = perc_change[, "country"],
 ```
 
 ```{r}
-p1 = perc_change %>%
-  ggplot(aes(x = country, y = perc, col = continent)) + geom_point()
+#p1 = perc_change %>%
+#  ggplot(aes(x = country, y = perc, col = continent)) + geom_point()
 
-p1
+#p1
+```
+
+```{r}
+perc_change$comp = NA
+for (i in 1:length(perc_change$perc)) {
+  if (isTRUE(perc_change$perc[i] >= perc_change$perc[96])) {
+    perc_change$comp[i] = "Less or Equal"
+  } else {
+    perc_change$comp[i] = "More"
+  }
+}
+```
+
+```{r}
+perc_change %>% ggplot(aes(comp, fill = continent)) + geom_bar()
 ```
 
