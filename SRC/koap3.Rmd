@@ -36,6 +36,13 @@ newhappy$Year = as.numeric(newhappy$Year)
 newhappy = subset(newhappy, is.na(Score)==FALSE)
 ```
 
+Exploratory Plots
+```{r}
+plot(newhappy$Year,newhappy$Score, xlab = 'Year', ylab = 'Happiness Score', main = 'Happiness Score vs Year for All Countries')
+fit = lm(newhappy$Score~newhappy$Year)
+abline(fit)
+```
+
 Linear Regression Model
 ```{r}
 # creates a linear model for each country
