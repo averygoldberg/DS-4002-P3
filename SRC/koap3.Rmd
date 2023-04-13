@@ -88,6 +88,7 @@ fitted %>% ggplot(aes(comp, fill = continent)) + geom_bar() + xlab('Percent Decr
 )
 ```
 
+
 ```{r}
 less = 0
 more = 0
@@ -97,8 +98,16 @@ for (i in 1:length(fitted$comp)) {
   } else {more = more + 1}
 }
 relative = c(more, less)
+relative_name = c('more', 'less')
+perc = data.frame((relative/162)*100,relative_name)
+colnames(perc) = c('percent','Relative Percent Change')
+rownames(perc) = c('more','less')
 ```
 
 ```{r}
-pie(relative, labels = unique(fitted$comp))
+ggplot(perc, aes(x = "", y = percent, fill = `Relative Percent Change`)) +
+  geom_col() +
+  geom_text(aes(label = paste(round(percent),'%',sep = "")),
+            position = position_stack(vjust = 0.5)) +
+  coord_polar(theta = "y")
 ```
