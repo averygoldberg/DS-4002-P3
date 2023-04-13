@@ -9,11 +9,12 @@ library(dplyr)
 library(tidyverse)
 library(countrycode)
 ```
-
+Load Data
 ```{r}
 happy = read.csv('/Users/averygoldberg/Desktop/DS 4002/hapiscore_whr.csv', header = TRUE)
 ```
 
+Clean and Prepare Data
 ```{r}
 happy = happy[,c(1,4:19)] # includes only years 2006-2021
 ```
@@ -35,6 +36,7 @@ newhappy$Year = as.numeric(newhappy$Year)
 newhappy = subset(newhappy, is.na(Score)==FALSE)
 ```
 
+Linear Regression Model
 ```{r}
 # creates a linear model for each country
 models <- dlply(newhappy, "country", function(df) 
@@ -52,7 +54,7 @@ for (i in 1:length(fitted$Slope)) {
   fitted$perc[i] = 100*min_one
 } # converts coefficient to percent change
 ```
-SOMETHING IS WRONG HERE!!!!!!!!!!!
+
 ```{r}
 fitted$continent <- countrycode(sourcevar = fitted[, "country"],
                             origin = "country.name",
@@ -64,13 +66,14 @@ fitted$continent <- countrycode(sourcevar = fitted[, "country"],
 USperc = fitted[which(fitted$country == 'United States'),4]
 ```
 
+Linear Regression for United States
 ```{r}
 plot(newhappy$Year[which(newhappy$country == 'United States')],newhappy$Score[which(newhappy$country == 'United States')], xlab = 'Year', ylab = 'Happiness Score', main = 'Happiness Score vs Year for United States')
 fit = lm(newhappy$Score[which(newhappy$country == 'United States')]~newhappy$Year[which(newhappy$country == 'United States')])
 abline(fit)
 ```
 
-
+Prepare Results
 ```{r}
 fitted$comp = NA
 for (i in 1:length(fitted$perc)) {
