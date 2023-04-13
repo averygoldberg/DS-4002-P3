@@ -24,6 +24,6 @@ You can download the dataset from:\
 Our data was used to explore our hypothesis: *During the years 2006-2021, the happiness score of the United States has decreased 10% more than the happiness score of various countries around the world.*
 
 ## REFERENCES
-[1] N. Hisham, "WHR-Happiness Score," version 4, GapMinder, Mar. 25, 2023. [Dataset]. Available: https://www.gapminder.org/data/. [Accessed: April 4, 2023].
-[2] hadley, "Linear Regression and group by in R," *Stack Overflow*, Jul. 31, 2009. Available: https://stackoverflow.com/questions/1169539/linear-regression-and-group-by-in-r. [Accessed: April 11, 2023].
+[1] N. Hisham, "WHR-Happiness Score," version 4, GapMinder, Mar. 25, 2023. [Dataset]. Available: https://www.gapminder.org/data/. [Accessed: April 4, 2023].\
+[2] hadley, "Linear Regression and group by in R," *Stack Overflow*, Jul. 31, 2009. Available: https://stackoverflow.com/questions/1169539/linear-regression-and-group-by-in-r. [Accessed: April 11, 2023].\
 [3] "Pie chart with percentages in ggplot2," *R Coder*. Available: https://r-charts.com/part-whole/pie-chart-percentages-ggplot2/. [Accessed: April 13, 2023].
