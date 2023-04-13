@@ -24,59 +24,81 @@ names(happy) = c('country',2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014,
 
 ```{r}
 # create data frame with country, year, score columns
-happy = happy %>%
+newhappy = happy %>%
   gather(Year,Score,2:17)
 ```
 
 ```{r}
 # convert year column to numeric values from character values
-happy$Year = as.numeric(happy$Year)
+newhappy$Year = as.numeric(newhappy$Year)
 # Remove NA values
-happy = subset(happy, is.na(Score)==FALSE)
+newhappy = subset(newhappy, is.na(Score)==FALSE)
 ```
 
 ```{r}
 # creates a linear model for each country
-models <- dlply(happy, "country", function(df) 
+models <- dlply(newhappy, "country", function(df) 
   lm(Score ~ Year, data = df))
 
 # returns coefficients of each linear model
 fitted = ldply(models, coef)
 
 # Linear Model source: https://stackoverflow.com/questions/1169539/linear-regression-and-group-by-in-r
-
+perc = rep(NA, length(fitted$Slope))
 names(fitted) = c('country','Intercept','Slope')
-perc = (exp(fitted$Slope) - 1)*100 # converts coefficient to percent change
-perc_change = data.frame(unique(happy$country), perc)
+for (i in 1:length(fitted$Slope)) {
+  expon = exp(fitted$Slope[i])
+  min_one = expon-1
+  fitted$perc[i] = 100*min_one
+} # converts coefficient to percent change
 ```
-
+SOMETHING IS WRONG HERE!!!!!!!!!!!
 ```{r}
-names(perc_change) = c('country','perc')
-perc_change$continent <- countrycode(sourcevar = perc_change[, "country"],
+fitted$continent <- countrycode(sourcevar = fitted[, "country"],
                             origin = "country.name",
                             destination = "continent")
 # assigns continent to each country
 ```
 
 ```{r}
-#p1 = perc_change %>%
-#  ggplot(aes(x = country, y = perc, col = continent)) + geom_point()
-
-#p1
+USperc = fitted[which(fitted$country == 'United States'),4]
 ```
 
 ```{r}
-perc_change$comp = NA
-for (i in 1:length(perc_change$perc)) {
-  if (isTRUE(perc_change$perc[i] >= perc_change$perc[96])) {
-    perc_change$comp[i] = "Less or Equal"
+plot(newhappy$Year[which(newhappy$country == 'United States')],newhappy$Score[which(newhappy$country == 'United States')], xlab = 'Year', ylab = 'Happiness Score', main = 'Happiness Score vs Year for United States')
+fit = lm(newhappy$Score[which(newhappy$country == 'United States')]~newhappy$Year[which(newhappy$country == 'United States')])
+abline(fit)
+```
+
+
+```{r}
+fitted$comp = NA
+for (i in 1:length(fitted$perc)) {
+  if (isTRUE(fitted$perc[i] >= USperc)) {
+    fitted$comp[i] = "Less or Equal"
   } else {
-    perc_change$comp[i] = "More"
+    fitted$comp[i] = "More"
   }
 }
 ```
 
 ```{r}
-perc_change %>% ggplot(aes(comp, fill = continent)) + geom_bar()
+fitted %>% ggplot(aes(comp, fill = continent)) + geom_bar() + xlab('Percent Decrease Relative to United States') + ylab('Number of Countries') + labs(
+  title = 'Number of Countries vs Percent Decrease in Happiness Score Relative to U.S.'
+)
 ```
 
+```{r}
+less = 0
+more = 0
+for (i in 1:length(fitted$comp)) {
+  if (fitted$comp[i] == 'Less or Equal') {
+    less = less + 1
+  } else {more = more + 1}
+}
+relative = c(more, less)
+```
+
+```{r}
+pie(relative, labels = unique(fitted$comp))
+```
