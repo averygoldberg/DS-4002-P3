@@ -12,8 +12,8 @@ To use our code, simply download the file above and run it in RStudio, ensuring 
 | Variable | Type | Description |
 | --- | --- | --- |
 | country | Character | Country where the happiness score was assessed |
-| year | Integer | Year in which the happiness score was recorded |
-| score | Double | Happiness score is measured as the national average response to the question of life evaluations asking the following “Please imagine a ladder, with steps numbered from 0 at the bottom to 10 at the top. The top of the ladder represents the best possible life for you and the bottom of the ladder represents the worst possible life for you. On which step of the ladder would you say you personally feel you stand at this time?” Gapminder converted this indicator's scale from 0 to 100 to easily communicate it in terms of percentage [1]|
+| year | Numeric | Year in which the happiness score was recorded |
+| score | Numeric | Happiness score is measured as the national average response to the question of life evaluations asking the following “Please imagine a ladder, with steps numbered from 0 at the bottom to 10 at the top. The top of the ladder represents the best possible life for you and the bottom of the ladder represents the worst possible life for you. On which step of the ladder would you say you personally feel you stand at this time?” Gapminder converted this indicator's scale from 0 to 100 to easily communicate it in terms of percentage [1]|
 
 The score variable was extracted from the original dataset which had country and year variables with the happiness score for each country listed under the given year.
 
