@@ -23,6 +23,14 @@ You can download the dataset from:\
 
 Our data was used to explore our hypothesis: *During the years 2006-2021, the happiness score of the United States has decreased 10% more than the happiness score of various countries around the world.*
 
+## FIGURES
+| Figure | Summary |
+| ------ | ------- |
+| Linear Regression US Happiness Score Scatter Plot | Scatter plot displaying the linear regression line for the United States Happiness Score over time. |
+| Relative Percent Decrease Bar Plot | Bar plot displaying the percent decrease in Happiness Score of various countries relative to the United States, indicating where the score decreased more or less than that of the United States over time. |
+| Relative Percent Decrease Pie Chart | Pie chart displaying the portion of countries whose Happiness Score fell into each relative decrease category. This chart proves the hypothesis by showing the percent of countries whose Happiness Score decreased more and less than the United States. |
+
+
 ## REFERENCES
 [1] N. Hisham, "WHR-Happiness Score," version 4, GapMinder, Mar. 25, 2023. [Dataset]. Available: https://www.gapminder.org/data/. [Accessed: April 4, 2023].\
 [2] hadley, "Linear Regression and group by in R," *Stack Overflow*, Jul. 31, 2009. Available: https://stackoverflow.com/questions/1169539/linear-regression-and-group-by-in-r. [Accessed: April 11, 2023].\
