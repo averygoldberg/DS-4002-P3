@@ -21,7 +21,7 @@ The score variable was extracted from the original dataset which had country and
 You can download the dataset from:\
 [GapMinder: Happiness Score Data](https://www.gapminder.org/data/) by clicking on the "Select an indicator" drop-down menu and searching "Happiness score (WHR)". The dataset can also be downloaded from the DATA folder in this repository.
 
-Our data was used to explore our hypothesis: *During the years 2006-2021, the happiness score of the United States has decreased 10% more than the happiness score of various countries around the world.*
+Our data was used to explore our hypothesis: *50% of countries has a lesser decrease in their happiness score compared to the U.S. during 2006-2021.*
 
 ## FIGURES
 | Figure | Summary |
